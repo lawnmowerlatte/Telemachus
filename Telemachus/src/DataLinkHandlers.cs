@@ -344,7 +344,7 @@ namespace Telemachus
 
             registerAPI(new ActionAPIEntry(
                 dataSources => { on_attitude = int.Parse(dataSources.args[0]); return 0; },
-                "v.setFbW", "Set Fly by Wire On or Off [bool state]", formatters.Default));
+                "v.setFbW", "Set Fly by Wire On or Off [int state]", formatters.Default));
 
             registerAPI(new ActionAPIEntry(
                 dataSources =>
@@ -1000,8 +1000,8 @@ namespace Telemachus
                 dataSources => { return FlightGlobals.Bodies[int.Parse(dataSources.args[0])].name; },
                 "b.name", "Body Name [body id]", formatters.String, APIEntry.UnitType.STRING));
             registerAPI(new PlotableAPIEntry(
-                dataSources => { return FlightGlobals.Bodies[int.Parse(dataSources.args[0])].maxAtmosphereAltitude; },
-                "b.maxAtmosphere", "Body Max Atmosphere [body id]", formatters.Default, APIEntry.UnitType.DISTANCE));
+                dataSources => { return FlightGlobals.Bodies[int.Parse(dataSources.args[0])].atmosphereDepth; },
+                "b.maxAtmosphere", "Body Atmosphere Depth [body id]", formatters.Default, APIEntry.UnitType.DISTANCE));
             registerAPI(new PlotableAPIEntry(
                 dataSources => { return FlightGlobals.Bodies[int.Parse(dataSources.args[0])].Radius; },
                 "b.radius", "Body Radius [body id]", formatters.Default, APIEntry.UnitType.DISTANCE));
@@ -1019,7 +1019,7 @@ namespace Telemachus
                 "b.tidallyLocked", "Tidally Locked [body id]", formatters.String, APIEntry.UnitType.UNITLESS));
             registerAPI(new PlotableAPIEntry(
                 dataSources => { return FlightGlobals.Bodies.Count; },
-                "b.number", "Number of Bodies [body id]", formatters.Default, APIEntry.UnitType.UNITLESS));
+                "b.number", "Number of Bodies", formatters.Default, APIEntry.UnitType.UNITLESS));
             registerAPI(new PlotableAPIEntry(
                 dataSources => { return FlightGlobals.Bodies[int.Parse(dataSources.args[0])].gravParameter; },
                 "b.o.gravParameter", "Body Gravitational Parameter [body id]", formatters.Default, APIEntry.UnitType.GRAV));
